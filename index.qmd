@@ -68,7 +68,7 @@ Here are the point values for each letter in Scrabble.
 - ... add more as necessary
 
 
-3. (3 bonus points) Write code to get your data into tidy form, if you can.    
+3. (2 bonus points) Write code to get your data into tidy form, if you can.    
 Hint: you may find the function `unnest()` (R) or `df.explode()` (Python) useful here.
 
 ```{r}
