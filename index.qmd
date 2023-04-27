@@ -1,7 +1,11 @@
 ---
 title: "Final Exam"
 author: "Your Name"
-format: html
+date: "May 16, 2023"
+categories: exam
+format:
+  html:
+    theme: default
 ---
 
 # Instructions
@@ -10,6 +14,9 @@ format: html
 # This chunk sets some options for the file compilation
 knitr::opts_chunk$set(collapse = T, message = F, warning = F, error = T)
 ```
+
+- This exam is due at 3pm on May 16, 2023 (the end of the final exam period for this class). 
+Your exam MUST BE PUSHED TO GITHUB CLASSROOM by 3pm. Please double-check your github repository to ensure that the file that is on github is the file you want me to grade.
 
 - For each of these problems, you may choose to solve the problem in either R or python.    
 The chunks I've provided are R chunks, but you are free to change the code type to python; I just want to ensure that your answers are where I expect them to be.
