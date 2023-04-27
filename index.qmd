@@ -21,8 +21,7 @@ Your exam MUST BE PUSHED TO GITHUB CLASSROOM by 3pm. Please double-check your gi
 - For each of these problems, you may choose to solve the problem in either R or python.    
 The chunks I've provided are R chunks, but you are free to change the code type to python; I just want to ensure that your answers are where I expect them to be.
 
-- (5 points) Your submitted qmd file must compile without errors .     
-Use `error=TRUE` in a chunk if it is supposed to return an error (for instance, if you are demonstrating error handling). 
+- The exam is worth a total of 40 points. There are 4 bonus points available.
 
 ## Rules
 
@@ -34,6 +33,9 @@ It is ok to google, for instance, how to convert a string to a list of character
 - You must be able to explain how any code you submit on this exam works. 
 
 - You may ask clarifying questions of Dr. Vanderplas by email/zoom or in person
+
+- (5 points) Your submitted qmd file must compile without errors .     
+Use `error=TRUE` in a chunk if it is supposed to return an error (for instance, if you are demonstrating error handling). 
 
 
 # Scrabble!
