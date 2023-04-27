@@ -11,11 +11,23 @@ format: html
 knitr::opts_chunk$set(collapse = T, message = F, warning = F, error = T)
 ```
 
-For each of these problems, you may choose to solve the problem in either R or python.
+- For each of these problems, you may choose to solve the problem in either R or python.    
+The chunks I've provided are R chunks, but you are free to change the code type to python; I just want to ensure that your answers are where I expect them to be.
 
-Your submitted qmd file must compile without errors (5 points). Use `error=TRUE` in a chunk if it is supposed to return an error (for instance, if you are demonstrating error handling). 
+- (5 points) Your submitted qmd file must compile without errors .     
+Use `error=TRUE` in a chunk if it is supposed to return an error (for instance, if you are demonstrating error handling). 
 
-You may use the textbook, your notes, and google on this exam, but you may not post this exam and ask for help on any site, and you must be able to explain how any code you submit on this exam works. It is ok to google, for instance, how to convert a string to a list of characters, but it is not ok to google how to solve the entire question. Please ask if you are concerned about any possible edge cases.
+## Rules
+
+- You may use the textbook, your notes, and google on this exam, but you may not post this exam and ask for help on any site.    
+It is ok to google, for instance, how to convert a string to a list of characters, but it is not ok to google how to solve the entire question. Please ask if you are concerned about any possible edge cases.
+
+- You may NOT confer with other people or AI entities - including posting on StackOverflow, Reddit, etc.
+
+- You must be able to explain how any code you submit on this exam works. 
+
+- You may ask clarifying questions of Dr. Vanderplas by email/zoom or in person
+
 
 # Scrabble!
 
@@ -30,44 +42,120 @@ Here are the point values for each letter in Scrabble.
 - 8 Points - J and X.
 - 10 Points - Q and Z.
 
-### Part 1: Functions
+## Part 1: Read in and Clean the Data
 
-(10 points + 3 possible bonus)
+(5 points + 2 bonus)
 
-Write a function named `scrabble_score(x)` which will take a word as an argument and determine the point value of that word. Assume that the blank tile is indicated by _.
+1. (2 points) Read in the file `scrabble_points.csv` and store it in a variable named `points`.
 
-Make sure your function includes input validation, so that if someone calls `scrabble_score(3)`, your function provides an appropriate error.
-
-For a bonus point, make sure your function accepts lower-case and upper-case input and treats both the same.
-
-For +2 points, make your function vectorized, so that you can handle either single characters or a vector of character input.
-
-```{r functions}
+```{r}
 
 ```
 
-```{r function-test, error = T, collapse = T}
+2. (3 points) What steps do you need to take to get this data into tidy form? Describe the operations, even if you do not know how to perform them yet.
+
+- 
+- 
+- ... add more as necessary
+
+
+3. (3 bonus points) Write code to get your data into tidy form, if you can.    
+Hint: you may find the function `unnest()` (R) or `df.explode()` (Python) useful here.
+
+```{r}
+
+```
+
+
+## Part 2: Functions
+
+(12 points + 2 bonus)
+
+For this part, you may find it useful to use the provided file `clean_points.csv`, which contains the same information as `scrabble_points.csv`, but in tidy form.
+
+1. (4 points) Write a function named `scrabble_score(x)` which will take a word as an argument and determine the point value of that word. Assume that the blank tile is indicated by _.
+
+```{r function-scrabble-score}
+
+```
+
+
+```{r function-scrabble-score-test, error = T}
+scrabble_score("YOU") # Should return 6 (4 + 1 + 1)
+scrabble_score("R_CK") # Should return 9 (1 + 0 + 3 + 5)
+```
+
+
+2. (2 points) Modify the function you wrote above so that it checks that the input is a string. That is, if someone calls `scrabble_score(3)`, your function should provide an appropriate error.
+
+```{r function-string-check}
+
+```
+
+```{r function-string-check-test, error = TRUE}
 scrabble_score(3)
-scrabble_score("elephant")
-scrabble_score("qi")
 ```
 
-```{python functions-py}
+3. (2 points) Modify your function so that it accepts lower-case and upper-case input and treats both the same.
+
+```{r function-caps}
 
 ```
 
-```{python function-test-py, error = T, collapse = T}
-scrabble_score(3)
-scrabble_score("elephant")
-scrabble_score("qi")
+```{r function-caps-test, error = T}
+scrabble_score("AWESOME") == scrabble_score("awEsOme")
 ```
 
 
-### Scrabble scoring
+4. (4 points) Modify your function so that it:
 
-(15 points)
+    - provides an appropriate warning if the provided string contains a character which is not valid
+    - removes any invalid characters from the string before calculating the score
+
+```{r function-invalid-check}
+
+```
+
+```{r function-invalid-check-test, error = T, warning = T}
+scrabble_score("GOOD LUCK!")
+```
+
+5. (2 bonus) Make your function vectorized, so that you can handle either single characters or a vector of character input.
+
+```{r function-vectorized}
+
+```
+
+```{r}
+scrabble_score(c("You", "can", "do", "this"))
+```
 
 
-Read in the text file [scrabble.txt](https://raw.githubusercontent.com/srvanderplas/stat151-homework/main/scrabble.txt) and create a data frame with the word in one column. Create (and fill) a column for the word score and another column with the word length. (3 points per column)
+## Part 3: Scoring
 
-Plot word length and word score in an appropriate plot (`geom_jitter` may be helpful). Describe the plot's main features in 2-3 sentences. Make sure your plot has an appropriate title and appropriate axis labels. Include any annotations (trend lines, etc.) that you think are helpful when describing your plot. (3 points for the plot, 3 for the description)
+(18 points)
+
+1. (3 points) Create a data frame named `scrabble` with a column named `word` containing the words in the file `words.txt`. 
+
+```{r scrabble-word-data-frame}
+
+```
+
+
+
+2. (6 points) Add a column, `score`, to `scrabble` containing the word score and add another column, `length`, with the word length.
+
+```{r scrabble-word-df-columns}
+
+```
+
+3. (3 points) Plot word length and word score in an appropriate plot (`geom_jitter` may be helpful). Make sure your plot has an appropriate title and axis labels. Include any annotations (trend lines, etc.) that you think are helpful for emphasizing important features of the data.
+
+```{r scrabble-word-plot}
+
+```
+
+4. (3 points) Describe the plot's main features in 2-3 sentences.
+
+5. (3 points) What challenges would you face if you plot the score of all 279,498 valid scrabble words in `Collins Scrabble Words (2019).txt`? What modifications would you consider making to your plot?    
+You do not have to actually plot this additional data, but you may want to try it to see what the problems are.
