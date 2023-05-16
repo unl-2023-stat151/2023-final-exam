@@ -158,7 +158,7 @@ scrabble_score(c("You", "can", "do", "this"))
 
 ```
 
-3. (3 points) Plot word length and word score in an appropriate plot (`geom_jitter` may be helpful). Make sure your plot has an appropriate title and axis labels. Include any annotations (trend lines, etc.) that you think are helpful for emphasizing important features of the data.
+3. (3 points) Plot word length and word score in an appropriate plot (`geom_jitter` may be helpful). Make sure your plot has an appropriate title and axis labels. Include any annotations (trend lines, etc.) that you think are helpful for emphasizing important features of the data. If you had trouble with the previous parts, you may use `length_score_graph.csv` to complete this part.
 
 ```{r scrabble-word-plot}
 
